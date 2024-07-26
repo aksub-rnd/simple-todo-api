@@ -31,7 +31,11 @@ class PostTodoHandler {
             return response()->json([
                 "status" => 200,
                 "msg" => "Success",
-                "data" => $todo
+                "data" => [
+                    "id" => $todo->id,
+                    "title" => $todo->title,
+                    "status" => $todo->status
+                ]
             ]);
         }
         catch (\Exception $ex) {
