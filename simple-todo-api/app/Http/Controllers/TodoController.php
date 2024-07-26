@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Functions\GetTodoHandler;
-use App\Models\Todo;
-use App\Http\Requests\StoreTodoRequest;
-use App\Http\Requests\UpdateTodoRequest;
+use App\Http\Functions\DeleteTodoHandler;
 use Illuminate\Http\Request;
 
 class TodoController extends Controller
@@ -15,8 +13,8 @@ class TodoController extends Controller
         return GetTodoHandler::Execute($req);
     }
 
-    public function delete() {
-
+    public function delete(Request $req, $id) {
+        return DeleteTodoHandler::Execute($req, $id);
     }
 
 
