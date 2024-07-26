@@ -10,3 +10,5 @@ Route::get('/user', function (Request $request) {
 
 Route::get("/", [TodoController::class, "get"]);
 Route::delete("/{id}", [TodoController::class, "delete"]);
+Route::post("/post", [TodoController::class, "post"]);
+// Route::put("/{id}", [TodoController::class, "put"]);
