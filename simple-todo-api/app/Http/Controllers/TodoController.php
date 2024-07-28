@@ -19,8 +19,8 @@ class TodoController extends Controller
         return PostToDoHandler::Execute($req);
     }
 
-    public function put(Request $req) {
-        return PutTodoHandler::Execute($req);
+    public function put(Request $req, $id) {
+        return PutTodoHandler::Execute($req, $id);
     }
 
     public function delete(Request $req, $id) {
