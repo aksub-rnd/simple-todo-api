@@ -11,7 +11,7 @@ class PutTodoHandler {
         try {
             $req->validate([
                 'title'=>'nullable',
-                'status'=>'nullable|boolean'
+                'status'=>'nullable'
             ]);
 
             $todo = Todo::find($id);
@@ -25,10 +25,22 @@ class PutTodoHandler {
             $title=$req->title;
             $status=$req->status;
 
-            if ($title == null||$status===null) {
+            if ($title == null && !is_bool($status)) {
                 return response()->json([
                     "status" => 400,
                     "msg" => ["Title required!", "Status must be a boolean!"]
+                ]);
+            }
+            else if ($title == null) {
+                return response()->json([
+                    "status" => 400,
+                    "msg" => "Title required!"
+                ]);
+            }
+            else if (!is_bool($status)) {
+                return response()->json([
+                    "status" => 400,
+                    "msg" => "Status must be a boolean!"
                 ]);
             }
 

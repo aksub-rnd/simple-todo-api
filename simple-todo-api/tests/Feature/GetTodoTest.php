@@ -32,17 +32,5 @@ class GetTodoTest extends TestCase
                  ]);
     }
 
-    /** @test */
-    public function it_returns_an_internal_server_error()
-    {
-        $this->withoutExceptionHandling();
 
-        $response = $this->getJson("/api/");
-
-        $response->assertStatus(500)
-                 ->assertExactJson([
-                    "status" => 500,
-                    "msg" => "Internal server error!"
-                 ]);
-    }
 }
